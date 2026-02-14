@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <script>
+    const noAnswers = [
+        "Tu es sûre ?", "Tu es sûre-sûre ?", "Dis juste oui neuneu", "Plouc s'il te plaîtttttttt", "Espèce de tahan farhan", "T'as intérêt à dire oui", "Dernière chance"
+    ];
+    window.onload = () => {
+        let noCount = 0;
+        const no = document.getElementById("no");
+        const main = document.getElementById("main");
+        const noContent = no.content;
+        let yesFontSize = 1;
+        main.appendChild(noContent);
+        const noButton = document.getElementById("no-button");
+        const yesButton = document.getElementById("yes-button");
+        const yes = document.getElementById("yes");
+        const yesContent = yes.content;
+        noButton.onclick = () => {
+            console.log("owo");
+            if (noCount < (noAnswers.length - 1)) {
+                noCount = noCount + 1;
+            };
+            noButton.innerText = noAnswers[noCount];
+            yesFontSize = yesFontSize + 1;
+            yesButton.style.fontSize = `${yesFontSize}em`;
+        };
+        yesButton.onclick = () => {
+            main.replaceChildren();
+            main.appendChild(yesContent);
+        };
+    };
+    </script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+        body, main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        main {
+            flex-direction: column;
+        }
+        p {
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <template id="no">
+        <img src="no.gif" />
+        <p>Will you be my valentine?<p>
+        <div>
+            <button id="yes-button">Oui</button>
+            <button id="no-button">Non</button>
+        </div>
+    </template>
+    <template id="yes">
+        <img src="yes.jpg" />
+        <p>enfin neuneu</p>
+    </template>
+    <main id="main">
+        
+    </main>
+</body>
